@@ -19,7 +19,7 @@ public class ConnUtil {
         Class.forName(mysJDBCDriver).newInstance();
         
 		String host = "mysql4.cs.stonybrook.edu";
-		String db = "?user=daling";
+		String db = "daling";
 		String user = "daling";
 		String password = "110429955";
 		String url = "jdbc:mysql://" + host + ":3306/" + db;
