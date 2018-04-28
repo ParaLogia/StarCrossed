@@ -49,7 +49,7 @@ public class Date {
 	public Timestamp getDateTime() {
 		return dateTime;
 	}
-	public void setDateTime() {
+	public void setDateTime(Timestamp dateTime) {
 		this.dateTime = dateTime;
 	}
 	public String getLocation() {
