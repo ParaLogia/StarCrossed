@@ -1,5 +1,6 @@
 package beans;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Date {
@@ -8,7 +9,7 @@ public class Date {
 	private String custRep;
 	private Timestamp dateTime;
 	private String location;
-	private Double bookingFee;
+	private BigDecimal bookingFee;
 	private String comments;
 	private Integer user1Rating;
 	private Integer user2Rating;
@@ -16,7 +17,7 @@ public class Date {
 	public Date() {
 		
 	}
-	public Date(String profile1, String profile2, String custRep, Timestamp dateTime, String location, Double bookingFee, String comments, Integer user1Rating, Integer user2Rating) {
+	public Date(String profile1, String profile2, String custRep, Timestamp dateTime, String location, BigDecimal bookingFee, String comments, Integer user1Rating, Integer user2Rating) {
 		this.profile1 = profile1;
 		this.profile2 = profile2;
 		this.custRep = custRep;
@@ -58,10 +59,10 @@ public class Date {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public Double getBookingFee() {
+	public BigDecimal getBookingFee() {
 		return bookingFee;
 	}
-	public void setBookingFee(Double bookingFee) {
+	public void setBookingFee(BigDecimal bookingFee) {
 		this.bookingFee = bookingFee;
 	}
 	public String getComments() {
