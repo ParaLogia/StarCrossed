@@ -96,13 +96,14 @@ public class LoginServlet extends HttpServlet {
 	
 	public boolean validLogin(String email, String password, Connection conn) throws SQLException {
 	    String queryString = "SELECT * FROM person WHERE Email = ? AND Password = ?";
-	    PreparedStatement query = conn.prepareStatement(queryString);
-	    query.setString(1, email);
-        query.setString(2, password);
-	    
-	    ResultSet rs = query.executeQuery();
-	    
-	    return rs.next();
+	    try (PreparedStatement query = conn.prepareStatement(queryString)) {
+    	    query.setString(1, email);
+            query.setString(2, password);
+    	    
+    	    ResultSet rs = query.executeQuery();
+    	    
+    	    return rs.next();
+	    }
 	}
 
 }
