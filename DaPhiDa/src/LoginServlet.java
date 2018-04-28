@@ -32,7 +32,15 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
-		response.sendRedirect("../login.html");
+	    HttpSession session = request.getSession();
+	    String login = (String)session.getAttribute("login");
+	    
+	    if (login == null) {
+	        response.sendRedirect("../login.html");
+	    }
+	    else {
+	        response.sendRedirect("../index.html");
+	    }
 	}
 
 	/**
@@ -42,12 +50,12 @@ public class LoginServlet extends HttpServlet {
 	                        throws ServletException, IOException {
 	    // TODO logout still needs to be implemented
 //	    if((request.getParameter("action")!=null) 
-//	            && (request.getParameter("action").trim().equals("logout")))
-//        {
+//	            && (request.getParameter("action").trim().equals("logout"))) {
 //	        HttpSession session=request.getSession();  
-//            session.setAttribute("login", "");
+//            session.removeAttribute("login");
 //            response.sendRedirect("/");
 //            return;
+//	        System.err.println("action: " + request.getParameter("action"));
 //        }
 //        
         String email = request.getParameter("email");
@@ -55,7 +63,7 @@ public class LoginServlet extends HttpServlet {
         
         
         HttpSession session = request.getSession();
-        session.setAttribute("login", "");
+        
         if ((email != null) && (password != null)) {
             if (email.trim().equals("") || password.trim().equals("")) {
                 response.sendRedirect("../login.html");
