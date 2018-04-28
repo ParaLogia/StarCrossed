@@ -13,7 +13,11 @@ import java.sql.SQLException;
  *
  */
 public class ConnUtil {
-	public static Connection getConnection() throws SQLException, ClassNotFoundException{
+	public static Connection getConnection() throws SQLException, ClassNotFoundException, 
+	                                        InstantiationException, IllegalAccessException {
+        String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
+        Class.forName(mysJDBCDriver).newInstance();
+        
 		String host = "mysql4.cs.stonybrook.edu";
 		String db = "?user=daling";
 		String user = "daling";
