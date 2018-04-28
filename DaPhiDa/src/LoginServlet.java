@@ -46,15 +46,15 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         
-        String username = request.getParameter("uname");
-        String userpasswd = request.getParameter("psw");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         
         
         HttpSession session = request.getSession();
 //        session.putValue("login","");
         session.setAttribute("login", "");
-        if ((username != null) && (userpasswd != null)) {
-            if (username.trim().equals("") || userpasswd.trim().equals("")) {
+        if ((email != null) && (password != null)) {
+            if (email.trim().equals("") || password.trim().equals("")) {
                 response.sendRedirect("../login.html");
                 return;
             }
@@ -64,10 +64,10 @@ public class LoginServlet extends HttpServlet {
     
                 conn.setAutoCommit(false);
                 
-                if (validLogin(username, userpasswd, conn)) {
+                if (validLogin(email, password, conn)) {
                     // TODO
                     System.err.println("Successfully logged in");
-                    session.setAttribute("login", username);
+                    session.setAttribute("login", email);
                     
                     response.sendRedirect("../index.html");
                 }
@@ -83,14 +83,14 @@ public class LoginServlet extends HttpServlet {
         }
 	}
 	
-	public boolean validLogin(String username, String password, Connection conn) throws SQLException {
+	public boolean validLogin(String email, String password, Connection conn) throws SQLException {
 	    // TODO
 	    Statement stmt1 = conn.createStatement();
 	    
-//      ResultSet rs = stmt1.executeQuery(" select * from Student where Id='"+username+"' and Pswd='"+userpasswd+"'");
+	    ResultSet rs = stmt1.executeQuery(" select * from person where Email='" + email
+                                          + "' and Password='"+ password +"'");
 	    
-	    // stub
-	    return password.charAt(0) == 'a';
+	    return rs.next();
 	}
 
 }
