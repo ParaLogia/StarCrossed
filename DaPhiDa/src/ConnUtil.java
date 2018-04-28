@@ -13,16 +13,27 @@ import java.sql.SQLException;
  *
  */
 public class ConnUtil {
+
+    private static String protocol = "jdbc:mysql://";
+    private static String host = "mysql4.cs.stonybrook.edu";
+    private static String port = "3306";
+    private static String db = "daling";
+    private static String user = "daling";
+    private static String password = "110429955";
+    
+    private static boolean isDriverInstantiated = false;
+    
+    
 	public static Connection getConnection() throws SQLException, ClassNotFoundException, 
 	                                        InstantiationException, IllegalAccessException {
-        String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
-        Class.forName(mysJDBCDriver).newInstance();
-        
-		String host = "mysql4.cs.stonybrook.edu";
-		String db = "daling";
-		String user = "daling";
-		String password = "110429955";
-		String url = "jdbc:mysql://" + host + ":3306/" + db;
+        if (!isDriverInstantiated ) {
+            String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
+            Class.forName(mysJDBCDriver).newInstance();
+            
+            isDriverInstantiated = true;
+        }
+
+        String url = protocol + host + ":" + port + "/" + db;
 		Connection ret = DriverManager.getConnection(url, user, password);
 		return ret;
 	}
