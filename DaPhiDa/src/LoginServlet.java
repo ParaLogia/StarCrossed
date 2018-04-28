@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 import java.sql.*;
 
 /**
- * Servlet implementation class LoginServlet
+ * A servlet that handles login attempts
+ * 
+ * @author Phillip Huang
  */
 @WebServlet(urlPatterns = { "/login/submit" })
 public class LoginServlet extends HttpServlet {
@@ -28,30 +30,31 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	                        throws ServletException, IOException {
+		response.sendRedirect("../login.html");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    if((request.getParameter("action")!=null) && (request.getParameter("action").trim().equals("logout")))
-        {
-	        HttpSession session=request.getSession();  
-//            session.putValue("login","");
-            session.setAttribute("login", "");
-            response.sendRedirect("/");
-            return;
-        }
-        
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	                        throws ServletException, IOException {
+	    // TODO logout still needs to be implemented
+//	    if((request.getParameter("action")!=null) 
+//	            && (request.getParameter("action").trim().equals("logout")))
+//        {
+//	        HttpSession session=request.getSession();  
+//            session.setAttribute("login", "");
+//            response.sendRedirect("/");
+//            return;
+//        }
+//        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
         
         HttpSession session = request.getSession();
-//        session.putValue("login","");
         session.setAttribute("login", "");
         if ((email != null) && (password != null)) {
             if (email.trim().equals("") || password.trim().equals("")) {
@@ -84,11 +87,12 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	public boolean validLogin(String email, String password, Connection conn) throws SQLException {
-	    // TODO
-	    Statement stmt1 = conn.createStatement();
+	    String queryString = "SELECT * FROM person WHERE Email = ? AND Password = ?";
+	    PreparedStatement query = conn.prepareStatement(queryString);
+	    query.setString(1, email);
+        query.setString(2, password);
 	    
-	    ResultSet rs = stmt1.executeQuery(" select * from person where Email='" + email
-                                          + "' and Password='"+ password +"'");
+	    ResultSet rs = query.executeQuery();
 	    
 	    return rs.next();
 	}
