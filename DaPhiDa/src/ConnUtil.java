@@ -8,8 +8,15 @@ import java.sql.SQLException;
  * 
  * Connection x = ConnUtil.getConnection();
  * 
+ * It is a good idea to use a try-with-resources block, that is:
+ * 
+ * try (Connection x = ConnUtil.getConnection()) {
+ *      // Code involving connection
+ * }
+ * catch (Exception e) { ... }
+ * 
  * Note this is hardcoded with our database, if we need to change or modify the connection check here.
- * @author Darren Ling
+ * @author Darren Ling, Phillip Huang
  *
  */
 public class ConnUtil {
@@ -24,7 +31,7 @@ public class ConnUtil {
     private static boolean isDriverInstantiated = false;
     
     
-	public static Connection getConnection() throws SQLException, ClassNotFoundException, 
+    public static Connection getConnection() throws SQLException, ClassNotFoundException, 
 	                                        InstantiationException, IllegalAccessException {
         if (!isDriverInstantiated ) {
             String mysJDBCDriver = "com.mysql.jdbc.Driver"; 
@@ -34,7 +41,7 @@ public class ConnUtil {
         }
 
         String url = protocol + host + ":" + port + "/" + db;
-		Connection ret = DriverManager.getConnection(url, user, password);
+        Connection ret = DriverManager.getConnection(url, user, password);
 		return ret;
-	}
+    }
 }
