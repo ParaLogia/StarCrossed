@@ -2,7 +2,7 @@ package beans;
 
 import java.sql.Date;
 
-public class Account {
+public class Account implements java.io.Serializable {
 	private String ownerSSN;
 	private Integer cardNumber;
 	private String acctNumber;

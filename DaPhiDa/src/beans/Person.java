@@ -1,6 +1,6 @@
 package beans;
 
-public class Person {
+public class Person implements java.io.Serializable {
 	private String ssn;
 	private String password;
 	private String firstName;

@@ -2,7 +2,7 @@ package beans;
 
 import java.sql.Timestamp;
 
-public class BlindDate {
+public class BlindDate implements java.io.Serializable {
 	private String profileA;
 	private String profileB;
 	private String profileC;

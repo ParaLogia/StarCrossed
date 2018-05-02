@@ -2,7 +2,7 @@ package beans;
 
 import java.sql.Timestamp;
 
-public class User {
+public class User implements java.io.Serializable {
 	private String ssn;
 	private String ppp;
 	private Integer rating;
