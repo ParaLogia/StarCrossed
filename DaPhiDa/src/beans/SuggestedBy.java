@@ -2,7 +2,7 @@ package beans;
 
 import java.sql.Timestamp;
 
-public class SuggestedBy implements java.io.Serializable {
+public class SuggestedBy {
 	private String custRep;
 	private String profile1;
 	private String profile2;

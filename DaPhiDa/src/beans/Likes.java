@@ -2,7 +2,7 @@ package beans;
 
 import java.sql.Timestamp;
 
-public class Likes implements java.io.Serializable {
+public class Likes {
 	private String liker;
 	private String likee;
 	private Timestamp dateTime;

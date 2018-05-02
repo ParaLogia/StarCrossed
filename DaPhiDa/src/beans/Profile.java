@@ -3,7 +3,7 @@ package beans;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class Profile implements java.io.Serializable {
+public class Profile {
 	private String profileID;
 	private String ownerSSN;
 	private Integer age;

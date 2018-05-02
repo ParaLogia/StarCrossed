@@ -2,7 +2,7 @@ package beans;
 
 import java.sql.Date;
 
-public class Employee implements java.io.Serializable {
+public class Employee {
 	private String ssn;
 	private String role;
 	private Date startDate;

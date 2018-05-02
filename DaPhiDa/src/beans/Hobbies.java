@@ -1,6 +1,6 @@
 package beans;
 
-public class Hobbies implements java.io.Serializable {
+public class Hobbies {
 	private String hobby;
 	private String profileID;
 	
