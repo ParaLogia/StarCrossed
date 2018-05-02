@@ -57,8 +57,13 @@ public class PublicProfileServlet extends HttpServlet {
 			if(profiles.isEmpty()) {
 				Profile profile = new Profile();
 				profile.setProfileID("No Profiles Currently Found, Go make one!");
+				profiles.add(profile);
 			}
 			session.setAttribute("profiles", profiles);
+			
+			System.out.flush();
+			System.out.println("profiles: " + profiles);
+			
 			RequestDispatcher view = request.getRequestDispatcher("pubprof.jsp");
 			view.forward(request, response);
 			ConnUtil.closeQuietly(conn);
