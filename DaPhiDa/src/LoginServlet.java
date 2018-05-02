@@ -108,7 +108,9 @@ public class LoginServlet extends HttpServlet {
 	    }
 	}
 	public boolean isEmployee(String email, Connection conn) throws SQLException{
-		String queryString = "SELECT * FROM person per employee emp WHERE per.Email = ? AND per.SSN = emp.SSN";
+		String queryString = "SELECT emp.* " 
+				+ "FROM person per, employee emp "
+				+ "WHERE per.Email = ? AND per.SSN = emp.SSN";
 	    try (PreparedStatement query = conn.prepareStatement(queryString)) {
     	    query.setString(1, email);
     	    ResultSet rs = query.executeQuery();
