@@ -16,7 +16,7 @@
                     <li><a href="editprof" class="hvr-grow" style="color: white;">Edit Your Profile</a></li>
                     <li><a href="search.jsp" class="hvr-grow" style="color: white;">Search</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle hvr-grow" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                        <a href="help.jsp" class="dropdown-toggle hvr-grow" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">
                         Help <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                         	<li><a href="help.jsp">Help me</a></li>

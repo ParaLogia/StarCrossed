@@ -13,7 +13,7 @@
 
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
-            <h2>Help me</h2> <br>
+            <h2>Help me たすけて～</h2> <br>
             	<img src="Logo.PNG" height = "500" width = "500" class = "center-image"/>
             <br>
         </div>
