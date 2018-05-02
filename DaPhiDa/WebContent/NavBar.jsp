@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-inverse" style="position: fixed; z-index: 1; width: 100%;">
         <div class="container">
             <div class="navbar-header">
