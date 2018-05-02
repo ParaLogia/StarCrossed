@@ -10,7 +10,7 @@ import javax.servlet.http.*;
  * @author Darren Ling
  *
  */
-@WebFilter(urlPatterns = { "/editprof.jsp" })
+@WebFilter(urlPatterns = { "/editprof.jsp", "/pubprof.jsp", "/search.jsp"})
 public class LoginFilter implements Filter {
 
 	@Override

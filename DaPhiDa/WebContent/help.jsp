@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="WEB-INF/main.css">
 </head>
-
 <body>
     <jsp:include page="NavBar.jsp"></jsp:include>
     <div style="height: 54px;"></div>
@@ -15,7 +14,7 @@
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
             <h2>Help me</h2> <br>
-            	<img src="images/checkmark.png" style="height: 400px;" />
+            	<img src="Logo.PNG" height = "500" width = "500" class = "center-image"/>
             <br>
         </div>
     </div>
