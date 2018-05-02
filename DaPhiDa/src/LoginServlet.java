@@ -36,10 +36,10 @@ public class LoginServlet extends HttpServlet {
 	    String login = (String)session.getAttribute("login");
 	    
 	    if (login == null) {
-	        response.sendRedirect("../login.html");
+	        response.sendRedirect("../login.jsp");
 	    }
 	    else {
-	        response.sendRedirect("../index.html");
+	        response.sendRedirect("../index.jsp");
 	    }
 	}
 
@@ -66,7 +66,7 @@ public class LoginServlet extends HttpServlet {
         
         if ((email != null) && (password != null)) {
             if (email.trim().equals("") || password.trim().equals("")) {
-                response.sendRedirect("../login.html");
+                response.sendRedirect("../login.jsp");
                 return;
             }
             
@@ -80,12 +80,12 @@ public class LoginServlet extends HttpServlet {
                     System.err.println("Successfully logged in");
                     session.setAttribute("login", email);
                     
-                    response.sendRedirect("../index.html");
+                    response.sendRedirect("../index.jsp");
                 }
                 else {
                     // TODO
                     System.err.println("Incorrect login");
-                    response.sendRedirect("../login.html");
+                    response.sendRedirect("../login.jsp");
                 }
             } 
             catch (Exception e) {
