@@ -85,6 +85,7 @@ public class LoginServlet extends HttpServlet {
                     System.err.println("Incorrect login");
                     response.sendRedirect("../login.jsp");
                 }
+                ConnUtil.closeQuietly(conn);
             } 
             catch (Exception e) {
                 e.printStackTrace();
