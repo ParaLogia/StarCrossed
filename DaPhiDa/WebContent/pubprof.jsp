@@ -21,10 +21,6 @@
         </div>
     </div>
 
-    <div style="color: black; text-align: center; margin-bottom: 50px;">
-        <a href="index.html" class="btn btn-primary hvr-grow">Click here to return to the home page.</a>
-    </div>
-
     <jsp:include page="footer.html"></jsp:include> 
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
