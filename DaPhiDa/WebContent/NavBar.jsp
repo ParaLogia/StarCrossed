@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <nav class="navbar navbar-inverse" style="position: fixed; z-index: 1; width: 100%;">
         <div class="container">
             <div class="navbar-header">
@@ -31,3 +32,4 @@
             </div>
         </div>
     </nav>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
