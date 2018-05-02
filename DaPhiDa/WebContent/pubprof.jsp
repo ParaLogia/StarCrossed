@@ -21,7 +21,7 @@
           			</tr>
           			<c:forEach items="${profiles}" var="profile">
           				<tr>
-          					<td> <c:out value="${profile.profileID}" /> </td>
+          					<td> <a href = profiles&profile=<c:out value="${profile.profileID}"/>><c:out value="${profile.profileID}"/></a></td>
           				</tr>
           			</c:forEach>
           		</table>
