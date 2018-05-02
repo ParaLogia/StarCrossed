@@ -57,6 +57,7 @@ public class EditProfileServlet extends HttpServlet {
 			if(profiles.isEmpty()) {
 				Profile profile = new Profile();
 				profile.setProfileID("No Profiles Currently Found, Go make one!");
+				profiles.add(profile);
 			}
 			session.setAttribute("profiles", profiles);
 			RequestDispatcher view = request.getRequestDispatcher("editprof.jsp");
