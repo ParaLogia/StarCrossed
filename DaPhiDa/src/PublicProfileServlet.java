@@ -1,14 +1,23 @@
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ProfileServlet extends HttpServlet {
+import beans.Profile;
+
+@WebServlet(urlPatterns = { "/pubprof" })
+public class PublicProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -24,6 +33,35 @@ public class ProfileServlet extends HttpServlet {
 	                        throws ServletException, IOException {
 	    HttpSession session = request.getSession();
 	    
+	    String email = (String) session.getAttribute("login");
+	    //assume it won't be null since we run through a filter to get to this page
+	    String sql = "Select prof.ProfileID " 
+	    		+ "from profile prof, person per "
+	    		+ "where per.Email = ? AND per.SSN = prof.OwnerSSN";
+	    ResultSet s;
+	    try (Connection conn = ConnUtil.getConnection()){
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			s = ps.executeQuery();
+			List<Profile> profiles = new ArrayList<Profile>();
+			while (s.next()) {
+				Profile profile = new Profile();
+				profile.setProfileID(s.getString("ProfileID"));
+				profiles.add(profile);
+			}
+			if(profiles.isEmpty()) {
+				Profile profile = new Profile();
+				profile.setProfileID("No Profiles Currently Found, Go make one!");
+			}
+			session.setAttribute("profiles", profiles);
+			RequestDispatcher view = request.getRequestDispatcher("pubprof.jsp");
+			view.forward(request, response);
+			ConnUtil.closeQuietly(conn);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	    
 	}
 
 	/**
@@ -31,6 +69,6 @@ public class ProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		doGet(request,response);
 	}
 }

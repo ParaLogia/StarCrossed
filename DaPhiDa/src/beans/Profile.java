@@ -31,7 +31,6 @@ public class Profile {
 		this.height = height;
 		this.weight = weight;
 	}
-	
 	public String getProfileID() {
 		return profileID;
 	}
@@ -41,7 +40,7 @@ public class Profile {
 	public String getOwnerSSN() {
 		return ownerSSN;
 	}
-	public void getOwnerSSN(String ownerSSN) {
+	public void setOwnerSSN(String ownerSSN) {
 		this.ownerSSN = ownerSSN;
 	}
 	public Integer getAge() {
@@ -68,10 +67,10 @@ public class Profile {
 	public void setDatingGeoRange(Integer datingGeoRange) {
 		this.datingGeoRange = datingGeoRange;
 	}
-	public String getMF() {
+	public String getM_f() {
 		return m_f;
 	}
-	public void setMF(String m_f) {
+	public void setM_f(String m_f) {
 		this.m_f = m_f;
 	}
 	public BigDecimal getHeight() {
@@ -104,4 +103,6 @@ public class Profile {
 	public void setLastModDate(Timestamp lastModDate) {
 		this.lastModDate = lastModDate;
 	}
+	
+	
 }
