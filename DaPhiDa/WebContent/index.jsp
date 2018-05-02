@@ -19,7 +19,7 @@
 				Welcome to the best Dating Website. Here, you can search our database for lots of people. <br>
 				Start searching here:
                 <br>
-                <a href="search.html" class="btn btn-primary hvr-grow">Click here to find your soulmate</a>
+                <a href="search.jsp" class="btn btn-primary hvr-grow">Click here to find your soulmate</a>
         </div>
     </div>
 	<jsp:include page="footer.html"></jsp:include>    
