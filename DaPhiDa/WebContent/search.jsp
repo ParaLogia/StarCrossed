@@ -16,7 +16,7 @@
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
             <h2>Search for Amazing Matches, like Phillip Huang</h2> <br>
-            <input type="text" placeholder="Search..">
+            <input type="text" placeholder="Search...">
             <br>
         </div>
     </div>
