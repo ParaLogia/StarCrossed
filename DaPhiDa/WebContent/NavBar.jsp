@@ -13,7 +13,7 @@
                 <ul class="nav navbar-nav navbar-right ">
                     <li><a href="index.jsp" class="hvr-grow" style="color: white;">Home</a></li>
                     <li><a href="pubprof" class="hvr-grow" style="color: white;">View Your Profie</a></li>
-                    <li><a href="editprof.jsp" class="hvr-grow" style="color: white;">Edit Your Profile</a></li>
+                    <li><a href="editprof" class="hvr-grow" style="color: white;">Edit Your Profile</a></li>
                     <li><a href="search.jsp" class="hvr-grow" style="color: white;">Search</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle hvr-grow" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">

@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,6 +15,16 @@
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
             <h2>Please select a profile to edit</h2> <br>
+            	<table border = "5" style="width:100%">
+          			<tr>
+          				<th>Your Current Profiles</th>
+          			</tr>
+          			<c:forEach items="${profiles}" var="profile">
+          				<tr>
+          					<td> <c:out value="${profile.profileID}" /> </td>
+          				</tr>
+          			</c:forEach>
+          		</table>
         </div>
     </div>
     <jsp:include page="footer.html"></jsp:include>  
