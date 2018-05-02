@@ -16,6 +16,11 @@ import javax.servlet.http.HttpSession;
 
 import beans.Profile;
 
+/**
+ * this sets up the jsp file for editprof
+ * @author Darren Ling
+ *
+ */
 @WebServlet(urlPatterns = { "/editprof" })
 public class EditProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

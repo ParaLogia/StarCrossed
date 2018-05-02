@@ -16,6 +16,11 @@ import javax.servlet.http.HttpSession;
 
 import beans.Profile;
 
+/**
+ * this sets up the publicprof 
+ * @author Darren Ling
+ *
+ */
 @WebServlet(urlPatterns = { "/pubprof" })
 public class PublicProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

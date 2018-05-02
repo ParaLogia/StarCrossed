@@ -7,6 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import beans.Person;
 
+/**
+ * I might delete this later seeing how i'm not really using it.
+ * @author Darren Ling
+ *
+ */
 public class utilClass {
 	public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
 	 
