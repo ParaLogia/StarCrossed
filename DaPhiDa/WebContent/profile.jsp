@@ -65,7 +65,7 @@
           				<th>Hobbies</th>
           				<td>
 	          			<c:forEach items="${hobbies}" var="hobby">
-         					<c:out value = "${hobby}"/>
+         					<c:out value = "${hobby}"/> <br>
 	          			</c:forEach>
 	          			</td>
           			</tr>
