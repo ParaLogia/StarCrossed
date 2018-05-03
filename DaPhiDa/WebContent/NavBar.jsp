@@ -11,22 +11,22 @@
             </div>
             <div class="collapse navbar-collapse " id="navbar-collapse-3">
                 <ul class="nav navbar-nav navbar-right ">
-                    <li><a href="index.jsp" class="hvr-grow" style="color: white;">Home</a></li>
-                    <li><a href="pubprof" class="hvr-grow" style="color: white;">View Your Profie</a></li>
-                    <li><a href="editprof" class="hvr-grow" style="color: white;">Edit Your Profile</a></li>
-                    <li><a href="search.jsp" class="hvr-grow" style="color: white;">Search</a></li>
+                    <li><a href="/CSE_305/index.jsp" class="hvr-grow" style="color: white;">Home</a></li>
+                    <li><a href="/CSE_305/pubprof" class="hvr-grow" style="color: white;">View Your Profie</a></li>
+                    <li><a href="/CSE_305/editprof" class="hvr-grow" style="color: white;">Edit Your Profile</a></li>
+                    <li><a href="/CSE_305/search.jsp" class="hvr-grow" style="color: white;">Search</a></li>
                     <li class="dropdown">
-                        <a href="help.jsp" class="dropdown-toggle hvr-grow" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                        <a href="/CSE_305/help.jsp" class="dropdown-toggle hvr-grow" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">
                         Help <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                        	<li><a href="help.jsp">Help me</a></li>
+                        	<li><a href="/CSE_305/help.jsp">Help me</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="help.jsp">I'm dying</a></li>
+                            <li><a href="/CSE_305/help.jsp">I'm dying</a></li>
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
-                    <li><a href="login.jsp" class="hvr-grow" style="color: white;">Log In/Out</a></li>
-					<li><a href="aboutUs.jsp" class="hvr-grow" style="color: white;">About</a></li>
+                    <li><a href="/CSE_305/login.jsp" class="hvr-grow" style="color: white;">Log In/Out</a></li>
+					<li><a href="/CSE_305/aboutUs.jsp" class="hvr-grow" style="color: white;">About</a></li>
                 </ul>
             </div>
         </div>
