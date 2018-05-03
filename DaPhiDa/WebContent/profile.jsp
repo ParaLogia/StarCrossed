@@ -68,12 +68,16 @@
           		<c:if test="${emp != null}">
         			<br>
         			<a href="${profile.profileID}?edit=true">Edit</a>
+        			<br>
+        			<a href="/CSE_305/likes/${profile.profileID}">Who this profile likes</a>
           		</c:if>
           		<c:if test="${emp == null}">
 	          		<c:forEach items="${profiles}" var="prof">
 	          			<c:if test="${prof.equals(profile.profileID)}">
 	          				<br>
-	          				<a href="${profile.profileID}?edit=true">Edit</a>
+		        			<a href="${profile.profileID}?edit=true">Edit</a>
+		        			<br>
+		        			<a href="/CSE_305/likes/${profile.profileID}">Who this profile likes</a>
 	          			</c:if>
 	          		</c:forEach>
           		</c:if>
