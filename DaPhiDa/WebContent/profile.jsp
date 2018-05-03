@@ -66,6 +66,18 @@
           				<td><c:out value = "${profile.hobbies}"/></td>
           			</tr>
           		</table>
+          		<c:if test="${emp != null}">
+        			<br>
+        			<a href="${profile.profileID}?edit=true">Edit</a>
+          		</c:if>
+          		<c:if test="${emp == null}">
+	          		<c:forEach items="${profiles}" var="prof">
+	          			<c:if test="${prof.equals(profile.profileID)}">
+	          				<br>
+	          				<a href="${profile.profileID}?edit=true">Edit</a>
+	          			</c:if>
+	          		</c:forEach>
+          		</c:if>
             </c:if>
         </div>
     </div>
