@@ -10,7 +10,7 @@
 <body>
     <jsp:include page="NavBar.jsp"></jsp:include>
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
-        <div class="col-md-12">
+        <div class="col-md-12" align="left">
             <h2>Brief rationale for the E-R model</h2> <br>
             	
     Our E-R Diagram consists of three major entities: Profile, Customer, and Employee. The Customer represents the entity associated with a unique individual, specified by their User ID. This individual may have multiple payment methods which are represented with the attributes, account creation date, credit card number, and account number. 
