@@ -14,13 +14,16 @@ public class Profile {
 	private BigDecimal height;
 	private Integer weight;
 	private String hairColor;
+	private String hobbies;
 	private Timestamp creationDate;
 	private Timestamp lastModDate;
 	
 	public Profile() {
 		
 	}
-	public Profile(String profileID, String ownerSSN, Integer age, Integer datingAgeRangeStart, Integer datingAgeRangeEnd, Integer datingGeoRange, String m_f, BigDecimal height, Integer weight, String hairColor, Timestamp creationDate, Timestamp lastModDate) {
+	public Profile(String profileID, String ownerSSN, Integer age, Integer datingAgeRangeStart, 
+			Integer datingAgeRangeEnd, Integer datingGeoRange, String m_f, BigDecimal height, 
+			Integer weight, String hairColor, String hobbies, Timestamp creationDate, Timestamp lastModDate) {
 		this.profileID = profileID;
 		this.ownerSSN = ownerSSN;
 		this.age = age;
@@ -31,6 +34,7 @@ public class Profile {
 		this.height = height;
 		this.weight = weight;
 		this.hairColor = hairColor;
+		this.hobbies = hobbies;
 		this.creationDate = creationDate;
 		this.lastModDate = lastModDate;
 	}
@@ -93,6 +97,12 @@ public class Profile {
 	}
 	public void setHairColor(String hairColor) {
 		this.hairColor = hairColor;
+	}
+	public String getHobbies() {
+		return hobbies;
+	}
+	public void setHobbies(String hobbies) {
+		this.hobbies = hobbies;
 	}
 	public Timestamp getCreationDate() {
 		return creationDate;

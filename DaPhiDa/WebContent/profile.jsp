@@ -63,11 +63,7 @@
           			</tr>
           			<tr>
           				<th>Hobbies</th>
-          				<td>
-	          			<c:forEach items="${hobbies}" var="hobby">
-         					<c:out value = "${hobby}"/> <br>
-	          			</c:forEach>
-	          			</td>
+          				<td><c:out value = "${profile.hobbies}"/></td>
           			</tr>
           		</table>
             </c:if>

@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,14 +23,14 @@ import beans.Profile;
  * @author Darren Ling
  *
  */
-@WebServlet(urlPatterns = { "/editprof" })
+@WebServlet(urlPatterns = { "/profiles/edit/submit" })
 public class EditProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -37,37 +39,14 @@ public class EditProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
 	    HttpSession session = request.getSession();
+	    String login = (String)session.getAttribute("login");
 	    
-	    String email = (String) session.getAttribute("login");
-	    //assume it won't be null since we run through a filter to get to this page
-	    String sql = "Select prof.ProfileID " 
-	    		+ "from profile prof, person per "
-	    		+ "where per.Email = ? AND per.SSN = prof.OwnerSSN";
-	    ResultSet s;
-	    try (Connection conn = ConnUtil.getConnection()){
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, email);
-			s = ps.executeQuery();
-			List<Profile> profiles = new ArrayList<Profile>();
-			while (s.next()) {
-				Profile profile = new Profile();
-				profile.setProfileID(s.getString("ProfileID"));
-				profiles.add(profile);
-			}
-			if(profiles.isEmpty()) {
-				Profile profile = new Profile();
-				profile.setProfileID("No Profiles Currently Found, Go make one!");
-				profiles.add(profile);
-			}
-			session.setAttribute("profiles", profiles);
-			RequestDispatcher view = request.getRequestDispatcher("editprof.jsp");
-			view.forward(request, response);
-			ConnUtil.closeQuietly(conn);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	    
+	    if (login == null) {
+	        response.sendRedirect("/CSE_305/login.jsp");
+	    }
+	    else {
+	        response.sendRedirect("/CSE_305/pubprof");
+	    }
 	}
 
 	/**
@@ -75,6 +54,59 @@ public class EditProfileServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
-		doGet(request,response);
+		String profileID = request.getParameter("profileID");
+		
+		Integer age = Integer.valueOf(request.getParameter("age"));
+		Integer datingAgeRangeStart = Integer.valueOf(request.getParameter("datingAgeRangeStart"));
+		Integer datingAgeRangeEnd = Integer.valueOf(request.getParameter("datingAgeRangeEnd"));
+		Integer datingGeoRange = Integer.valueOf(request.getParameter("datingGeoRange"));
+		String m_f = request.getParameter("m_f");
+		BigDecimal height = new BigDecimal(request.getParameter("height"));
+		Integer weight = Integer.valueOf(request.getParameter("weight"));
+		String hairColor = request.getParameter("hairColor");
+		String hobbies = request.getParameter("hobbies");
+		
+		String update = 
+				"UPDATE Profile P " +
+				"SET age = ?, datingAgeRangeStart = ?, datingAgeRangeEnd = ?, "
+						+ "datingGeoRange = ?, m_f = ?, height = ?, "
+						+ "weight = ?, hairColor = ?, hobbies = ? " +
+				"WHERE profileID = ?";
+		
+		try (Connection conn = ConnUtil.getConnection(); 
+				PreparedStatement stmt = conn.prepareStatement(update)) 
+		{
+			stmt.setInt(1, age);
+			stmt.setInt(2, datingAgeRangeStart);
+			stmt.setInt(3, datingAgeRangeEnd);
+			stmt.setInt(4, datingGeoRange);
+			stmt.setString(5, m_f);
+			stmt.setBigDecimal(6, height);
+			stmt.setInt(7, weight);
+			stmt.setString(8, hairColor);
+			stmt.setString(9, hobbies);
+			stmt.setString(10, profileID);
+			
+			stmt.executeUpdate();
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+			
+			PrintWriter out = response.getWriter();
+			out.println("<html>");
+	        out.println("<head><title>Could not process</title></head>");
+	 
+	        out.println("<body>");
+	 
+	        out.println("<h3>Could not process your request</h3><br>");
+	        
+	        out.println("<a href = ../" + profileID + "> Return </a>");
+	 
+	        out.println("</body>");
+	        out.println("<html>");
+	        return;
+		}
+		
+		response.sendRedirect("../" + profileID);
 	}
 }
