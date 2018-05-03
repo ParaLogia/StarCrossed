@@ -17,35 +17,36 @@
             <c:if test = "${date1 == null}">
             	<h2> Error loading profile </h2> <br>
             </c:if>
-        	<c:if test = "${date1 != null}">            	
-            	<form action="receipt/submit" method="post">
+        	<c:if test = "${date1 != null}"> 
+        		<h2>Enter Information Here</h2>          	
+            	<form action="receipt" method="post">
 					<div class="container">
-						<label for="Profile1"><b>Profile1</b></label>
+						<label for="profile1"><b>Profile1</b></label>
 					    <input type="text" value="${date1.profile1}" name="profile1" required>
 						<br>
-						<label for="Profile2"><b>Profile2</b></label>
+						<label for="profile2"><b>Profile2</b></label>
 					    <input type="text" value="${date1.profile2}" name="profile2" required>
 						<br>
-						<label for="CustRep"><b>CustRep</b></label>
-					    <input type="text" value="${date1.CustRep}" name="custRep" required>
+						<label for="custRep"><b>CustRep</b></label>
+					    <input type="text" value="${date1.custRep}" name="custRep" required>
 						<br>
-					    <label for="Date_Time"><b>Date_Time</b></label>
-					    <input type="text" value="${date1.dateTime}" name="dateTime" required>
+					    <label for="dateTime"><b>Date_Time</b></label>
+					    <input type="datetime-local" value="${date1.dateTime}" name="dateTime" required>
 						<br>
-					    <label for="Location"><b>Location</b></label>
+					    <label for="location"><b>Location</b></label>
 					    <input type="text" value="${date1.location}" name="location" required>
 						<br>
-					    <label for="BookingFee"><b>BookingFee</b></label>
+					    <label for="bookingFee"><b>BookingFee</b></label>
 					    <input type="text" value="${date1.bookingFee}" name="bookingFee" required>
 						<br>
-					    <label for="Comments"><b>Comments</b></label>
+					    <label for="comments"><b>Comments</b></label>
 					    <input type="text" value="${date1.comments}" name="comments" required>
 						<br>
-					    <label for="User1Rating"><b>User1Rating</b></label>
-					    <input type="text" value="${date1.user1Rating}" name="user1Rating" required>
+					    <label for="user1Rating"><b>User1Rating</b></label>
+					    <input type="number" value="${date1.user1Rating}" name="user1Rating" required>
 						<br>
-					    <label for="User2Rating"><b>User2Rating</b></label>
-					    <input type="text" value="${date1.user1Rating}" name="user1Rating" required>
+					    <label for="user2Rating"><b>User2Rating</b></label>
+					    <input type="number" value="${date1.user2Rating}" name="user2Rating" required>
 						<br>
 					    <button type="submit">Submit</button>
 					</div>
