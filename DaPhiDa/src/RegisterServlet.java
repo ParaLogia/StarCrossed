@@ -88,6 +88,9 @@ public class RegisterServlet extends HttpServlet {
 	    
 	    try (PreparedStatement query = conn.prepareStatement(queryString)) {
 	    	
+	    	String countQuery = "SELECT COUNT(*) FROM person";
+	    	int i = (Integer)countQuery.execute();
+	    	
     	    query.setString(1, ssn);
             query.setString(2, password);
             query.setString(3, firstName);
@@ -99,6 +102,10 @@ public class RegisterServlet extends HttpServlet {
             query.setString(9, email);
             query.setString(10, telephone);
     	    query.executeUpdate();
+    	    
+    	    int j = (Integer)countQuery.execute();
+    	    if (i == j)
+    	    	return false;
 	    }
 	    return true;
 	}
