@@ -14,6 +14,7 @@
     <div style="height: 54px;"></div>
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
        <h2>Search Results</h2> <br>
+       	<p>Height search has a radius of 0.3 and Weight search has a radius of 20</p>
           		<table border = "5" style="width:100%">
           			<tr>
           				<th>Found these Profiles: </th>

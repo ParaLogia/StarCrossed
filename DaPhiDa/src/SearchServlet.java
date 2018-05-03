@@ -46,38 +46,53 @@ public class SearchServlet extends HttpServlet{
 	    		
 	    //yeah this is a bit weird, but it's flexible
 	    switch(searchType) {
-	    	case "Rating": case "DateOfLastAct":
-	    		//we get from user, exact
-	    		sql = sql + " " + searchType + " = " + searchTerm;
+	    	case "DateOfLastAct":
+	    		//like search
+	    		sql = sql + searchType + " like '%" + searchTerm + "%'";
+	    		break;
+	    		
+	    	case "Rating":
+	    		//we get exact
+	    		sql = sql + searchType + " = " + searchTerm;
 	    		break;
 	    		
 	    	case "City": case "State":
 	    		//we can get this from person, like
-	    		sql = sql + " " + searchType + " like '%" + searchTerm + "%'";
+	    		sql = sql + searchType + " like '%" + searchTerm + "%'";
 	    		break;
 	    		
 	    	case "Height":  
 	    		//we can get this from profile, range
-	    		
-	    		//TODO Currently Exact search so keep that in mind.
-	    		//BigDecimal comp = new BigDecimal(searchTerm);
-	    		//BigDecimal comp2 = new BigDecimal(0.3);
-	    		//sql = sql + " " + searchType + " between " + (comp.add(comp2)) + " and " + (comp.subtract(comp2)) + "";
-	    		
-	    		sql = sql + " " + searchType + " = " + searchTerm;
+	    		try {
+	    			BigDecimal comp = new BigDecimal(searchTerm);
+		    		BigDecimal comp2 = new BigDecimal("0.3");
+		    		sql = sql + searchType + " between " + (comp.subtract(comp2)) + " and " + (comp.add(comp2));
+	    		} catch (NumberFormatException e) {
+	    			//type checking
+	    			sql = sql + "false";
+	    		}
 	    		break;
+	    		
 	    	case "Weight":
 	    		//we can get this from profile, different range
-	    		Integer comp1 = Integer.parseInt(searchTerm);
-	    		sql = sql + " " + searchType + " between " + (comp1-20) + " and " + (comp1+20);
+	    		try {
+	    			Integer comp1 = Integer.parseInt(searchTerm);
+		    		sql = sql + searchType + " between " + (comp1-20) + " and " + (comp1+20);
+	    		} catch (NumberFormatException e) {
+	    			//type checking
+	    			sql = sql + "false";
+	    		}
+		    		
 	    		break;
+	    		
 	    	case "HairColor":
 	    		//we can get this from profile, exact
-	    		sql = sql + " " + searchType + " = " + searchTerm;
+	    		sql = sql + searchType + " = '" + searchTerm + "'";
 	    		break;
+	    		
 	    	case "ProfileID": default:
 	    		//we can get this from profile, like
-	    		sql = sql + " " + searchType + " like '%" + searchTerm + "%'";
+	    		sql = sql + searchType + " like '%" + searchTerm + "%'";
 	    }
 	    System.out.println(sql);
 	    
