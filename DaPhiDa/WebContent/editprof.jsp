@@ -22,56 +22,35 @@
             	
             	<form action="login/submit" method="post">
 					<div class="container">
-						<label for="email"><b>Email</b></label>
-					    <input type="text" placeholder="Enter Email" name="email" required>
+						<label for="age"><b>Age</b></label>
+					    <input type="number" value="${profile.age}" name="age" required>
 						<br>
-					    <label for="password"><b>Password</b></label>
-					    <input type="password" placeholder="Enter Password" name="password" required>
+						<label for="datingAgeRangeStart"><b>datingAgeRangeStart</b></label>
+					    <input type="number" value="${profile.datingAgeRangeStart}" name="datingAgeRangeStart" required>
+						<br>
+						<label for="datingAgeRangeEnd"><b>datingAgeRangeEnd</b></label>
+					    <input type="number" value="${profile.datingAgeRangeEnd}" name="datingAgeRangeEnd" required>
+						<br>
+					    <label for="datingGeoRange"><b>datingGeoRange</b></label>
+					    <input type="number" value="${profile.datingGeoRange}" name="datingGeoRange" required>
+						<br>
+					    <label for="m_f"><b>Gender</b></label>
+					    <input type="text" value="${profile.m_f}" name="m_f" required>
+						<br>
+					    <label for="height"><b>height</b></label>
+					    <input type="number" value="${profile.height}" name="height" required>
+						<br>
+					    <label for="weight"><b>weight</b></label>
+					    <input type="number" value="${profile.weight}" name="weight" required>
+						<br>
+					    <label for="hairColor"><b>hairColor</b></label>
+					    <input type="text" value="${profile.hairColor}" name="hairColor" required>
+						<br>
+					    <label for="hobbies"><b>hobbies</b></label>
+					    <input type="text" value="${profile.hobbies}" name="hobbies" required>
 						<br>
 					    <button type="submit">Login</button>    
-					</div>
-				</form> 
           		<table border = "5" style="width:100%">
-          			<tr>
-          				<th>age</th>
-          				<td><c:out value = "${profile.age}"/></td>
-          			</tr>
-          			<tr>
-          				<th>datingAgeRangeStart</th>
-          				<td><c:out value = "${profile.datingAgeRangeStart}"/></td>
-          			</tr>
-          			<tr>
-          				<th>datingAgeRangeEnd</th>
-          				<td><c:out value = "${profile.datingAgeRangeEnd}"/></td>
-          			</tr>
-          			<tr>
-          				<th>datingGeoRange</th>
-          				<td><c:out value = "${profile.datingGeoRange}"/></td>
-          			</tr>
-          			<tr>
-          				<th>m_f</th>
-          				<td><c:out value = "${profile.m_f}"/></td>
-          			</tr>
-          			<tr>
-          				<th>height</th>
-          				<td><c:out value = "${profile.height}"/></td>
-          			</tr>
-          			<tr>
-          				<th>weight</th>
-          				<td><c:out value = "${profile.weight}"/></td>
-          			</tr>
-          			<tr>
-          				<th>hairColor</th>
-          				<td><c:out value = "${profile.hairColor}"/></td>
-          			</tr>
-          			<tr>
-          				<th>creationDate</th>
-          				<td><c:out value = "${profile.creationDate}"/></td>
-          			</tr>
-          			<tr>
-          				<th>lastModDate</th>
-          				<td><c:out value = "${profile.lastModDate}"/></td>
-          			</tr>
           			<tr>
           				<th>Hobbies</th>
           				<td>
@@ -81,6 +60,8 @@
 	          			</td>
           			</tr>
           		</table>
+					</div>
+				</form> 
             </c:if>
         </div>
     </div>

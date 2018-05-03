@@ -44,7 +44,6 @@ public class ProfileServlet extends HttpServlet {
 		String profileID = requestURI.substring(requestURI.indexOf(urlStub) + urlStub.length());
 		
 		Profile profile = null;
-		List<String> hobbies = null;
 		
 		try (Connection conn = ConnUtil.getConnection()) {
 			conn.setAutoCommit(false);
@@ -71,29 +70,11 @@ public class ProfileServlet extends HttpServlet {
 					String hairColor			= rs.getString("hairColor");
 					Timestamp creationDate		= rs.getTimestamp("creationDate");
 					Timestamp lastModDate		= rs.getTimestamp("lastModDate");
+					String hobbies				= rs.getString("hobbies");
 					
 					profile = new Profile(profileID, ownerSSN, age, 
-							datingAgeRangeStart, datingAgeRangeEnd, datingGeoRange, 
-							m_f, height, weight, hairColor, creationDate, lastModDate);
-				}
-			}
-			
-			if (profile != null) {
-				// Get Hobbies
-				String hobbyQuery = 
-						"SELECT Hobby " +
-						"FROM Hobbies H " +
-						"WHERE H.ProfileID = ? ";
-				
-				try (PreparedStatement hobbyStmt = conn.prepareStatement(hobbyQuery)) {
-					hobbyStmt.setString(1, profileID);
-					ResultSet rs = hobbyStmt.executeQuery();
-					
-					hobbies = new ArrayList<>();
-					
-					while (rs.next()) {
-						hobbies.add(rs.getString(1));
-					}
+							datingAgeRangeStart, datingAgeRangeEnd, datingGeoRange, m_f, 
+							height, weight, hairColor, hobbies, creationDate, lastModDate);
 				}
 			}
 		}
@@ -103,7 +84,6 @@ public class ProfileServlet extends HttpServlet {
 
 		// Attach profile and hobbies to request
 		request.setAttribute("profile", profile);
-		request.setAttribute("hobbies", hobbies);	
 		
 		// Check if editing
 		String doEdit = (String) request.getAttribute("edit");
