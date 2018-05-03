@@ -11,7 +11,7 @@ import javax.servlet.http.*;
  *
  */
 @WebFilter(urlPatterns = { "/editprof", "/pubprof", "/search.jsp",
-		"/profiles/*", "/likes/*"})
+		"/profiles/*", "/likes/*", "/dates/*"})
 public class LoginFilter implements Filter {
 
 	@Override
