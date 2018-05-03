@@ -92,7 +92,6 @@ public class SearchServlet extends HttpServlet{
 	    		//we can get this from profile, like
 	    		sql = sql + searchType + " like '%" + searchTerm + "%'";
 	    }
-	    System.out.println(sql);
 	    
 	    ResultSet rs;
 	    try (Connection conn = ConnUtil.getConnection()){
