@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * @author Darren Ling
  *
  */
-@WebFilter(urlPatterns = { "/employee.jsp"})
+@WebFilter(urlPatterns = { "/employee.jsp", "/employee/*"})
 public class EmployeeFilter implements Filter{
 
 	@Override

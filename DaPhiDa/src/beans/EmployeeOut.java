@@ -26,7 +26,7 @@ public class EmployeeOut {
 		this.role = role;
 		this.startDate = startDate;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -90,4 +90,6 @@ public class EmployeeOut {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+	
+	
 }

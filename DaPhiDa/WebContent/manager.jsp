@@ -14,15 +14,15 @@
             <h2>Manager Homepage</h2> <br>
 			<p>Here you can perform very high level tasks as the manager</p>
 			<br>
-			<a href="/CSE_305/editEmployee.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Edit Employee</a>
-            <a href="/CSE_305/salesReport.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Sale Report</a>
-            <a href="/CSE_305/allUsers.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">All Users</a>
-            <a href="/CSE_305/listOfDates.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">List of Dates</a>
+			<a href="/CSE_305/manager/editEmployee" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Edit Employee</a>
+            <a href="/CSE_305/manager/salesReport.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Sale Report</a>
+            <a href="/CSE_305/manager/allUsers" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">All Users</a>
+            <a href="/CSE_305/manager/listOfDates.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">List of Dates</a>
             <div style="height: 30px;"></div>
-            <a href="/CSE_305/revenueBy.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Revenue by date or calendar</a>
-            <a href="/CSE_305/mostRevenue.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Most Revenue</a>
-            <a href="/CSE_305/customerToCustomer.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Customer to Customer List</a>
-            <a href="/CSE_305/highestRated.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Highest Rated</a>
+            <a href="/CSE_305/manager/revenueBy.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Revenue by date or calendar</a>
+            <a href="/CSE_305/manager/mostRevenue.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Most Revenue</a>
+            <a href="/CSE_305/manager/customerToCustomer.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Customer to Customer List</a>
+            <a href="/CSE_305/manager/highestRated.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Highest Rated</a>
         </div>
     </div>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
