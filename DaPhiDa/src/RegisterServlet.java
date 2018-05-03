@@ -1,4 +1,10 @@
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -6,15 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.Integer;
-import beans.String;
-
 /**
  * Servlet implementation class RegisterServlet
  * 
  * @author David Song
  */
-@WebServlet("/RegisterServlet")
+@WebServlet(urlPatterns = { "/register/submit" })
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -38,19 +41,17 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-	    String ssn = (String)session.getAttribute("ssn");
-	    String password = (String)session.getAttribute("password");
-	    String passwordRepeat = (String)session.getAttribute("passwordRepeat");
-	    String firstName = (String)session.getAttribute("firstName");
-	    String lastName = (String)session.getAttribute("lastName");
-	    String street= (String)session.getAttribute("street");
-	    String city = (String)session.getAttribute("city");
-	    String state = (String)session.getAttribute("state");
-	    int zipcode= (String)session.getAttribute("zipcode");
-	    String email = (String)session.getAttribute("email");
-	    String telephone= (String)session.getAttribute("telephone");
+	    String ssn = (String)request.getParameter("ssn");
+	    String password = (String)request.getParameter("password");
+	    String passwordRepeat = (String)request.getParameter("passwordRepeat");
+	    String firstName = (String)request.getParameter("firstName");
+	    String lastName = (String)request.getParameter("lastName");
+	    String street= (String)request.getParameter("street");
+	    String city = (String)request.getParameter("city");
+	    String state = (String)request.getParameter("state");
+	    Integer zipcode = Integer.valueOf(request.getParameter("zipcode"));
+	    String email = (String)request.getParameter("email");
+	    String telephone= (String)request.getParameter("telephone");
 	    
 	    if (email.trim().equals("") || password.trim().equals("") || ssn.trim().equals("") ) {
 	    	System.err.println("No spaces in fields");
@@ -65,10 +66,14 @@ public class RegisterServlet extends HttpServlet {
         try (Connection conn = ConnUtil.getConnection()) {
             System.err.println("Connected successfully to database");
 
-            conn.setAutoCommit(false);
+//            conn.setAutoCommit(false);
             
-            if ( !registerAccount(ssn, password, firstName, lastName, street, city, state, 
-														zipcode, email, telephone, conn) ) {
+            try {
+            	registerAccount(ssn, password, firstName, lastName, street, city, state, 
+						zipcode, email, telephone, conn);
+            }
+            catch (SQLException e) {
+            	e.printStackTrace();
             	System.err.println("Account not added to database");
             }
             
@@ -81,15 +86,22 @@ public class RegisterServlet extends HttpServlet {
     	response.sendRedirect("../login.jsp");
 	}
 	
-	private boolean registerAccount(String ssn, String password, String firstName, String lastName, String street, String city, String state, 
+	private void registerAccount(String ssn, String password, String firstName, String lastName, String street, String city, String state, 
 													Integer zipcode, String email, String telephone, Connection conn) throws SQLException {
-	    String queryString = "INSERT INTO person "
-	    		+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	    String queryString = 
+	    		"INSERT INTO person " +
+	    		"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    
 	    try (PreparedStatement query = conn.prepareStatement(queryString)) {
 	    	
-	    	String countQuery = "SELECT COUNT(*) FROM person";
-	    	int i = (Integer)countQuery.execute();
+//	    	String countQuery = "SELECT COUNT(*) FROM person";
+//	    	
+//	    	Statement stmt = conn.createStatement();
+//	    	ResultSet rs = stmt.executeQuery(countQuery);
+//	    	if (rs.next()) {
+//	    		System.out.println("COUNT before = " + rs.getInt(1));
+//	    	}
+//	    	stmt.close();
 	    	
     	    query.setString(1, ssn);
             query.setString(2, password);
@@ -98,16 +110,12 @@ public class RegisterServlet extends HttpServlet {
             query.setString(5, street);
             query.setString(6, city);
             query.setString(7, state);
-            query.setString(8, zipcode);
+            query	.setInt(8, zipcode);
             query.setString(9, email);
             query.setString(10, telephone);
-    	    query.executeUpdate();
-    	    
-    	    int j = (Integer)countQuery.execute();
-    	    if (i == j)
-    	    	return false;
+            
+            query.executeUpdate();
 	    }
-	    return true;
 	}
 
 }

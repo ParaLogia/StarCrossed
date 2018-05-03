@@ -15,7 +15,7 @@
         <div class="col-md-12">
                 <h2>Register an Account</h2> <br>
                 <br>
-                <form action="RegisterServlet" method="post">
+                <form action="register/submit" method="post">
 					<div class="container">
 						<label for="email"><b>Email</b></label>
 					    <input type="text" placeholder="Enter Email" name="email" required>
@@ -52,7 +52,7 @@
 					    <input type="text" placeholder="Enter Telephone" name="telephone">
 						<br>
 						
-					    <button type="submit">Login</button>    
+					    <button type="submit">Submit</button>    
 					</div>
 				</form> 
                 <br>
