@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.Profile;
 
@@ -89,12 +90,17 @@ public class ProfileServlet extends HttpServlet {
 		String doEdit = (String) request.getParameter("edit");
 		if (doEdit != null && doEdit.equalsIgnoreCase("true")) {
 			
-			// TODO security checks
+			// Security check
+			HttpSession session = request.getSession();
+			List<String> profiles = (List<String>) session.getAttribute("profiles");
 
-			// Pass request to jsp
-			RequestDispatcher view = request.getRequestDispatcher("/editprof.jsp");
-			view.forward(request, response);
-			return;
+			// Employees or profile owners can access
+			if (session.getAttribute("emp") != null || profiles.contains(profileID)) {
+				// Pass request to jsp
+				RequestDispatcher view = request.getRequestDispatcher("/editprof.jsp");
+				view.forward(request, response);
+				return;
+			}
 		}
 		
 		// Pass request to jsp

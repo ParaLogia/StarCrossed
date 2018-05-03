@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A servlet that handles login attempts
@@ -65,12 +67,13 @@ public class LoginServlet extends HttpServlet {
                 conn.setAutoCommit(false);
                 
                 if (validLogin(email, password, conn)) {
-                    // TODO
                     System.err.println("Successfully logged in");
                     session.setAttribute("login", email);
-                    if (isEmployee(email,conn)) {
+                    if (isEmployee(email, conn)) {
                     	session.setAttribute("emp", email);
                     }
+                    List<String> profiles = getProfiles(email, conn);
+                    session.setAttribute("profiles", profiles);
                     
                     response.sendRedirect("../index.jsp");
                 }
@@ -79,7 +82,6 @@ public class LoginServlet extends HttpServlet {
                     System.err.println("Incorrect login");
                     response.sendRedirect("../login.jsp");
                 }
-                ConnUtil.closeQuietly(conn);
             } 
             catch (Exception e) {
                 e.printStackTrace();
@@ -108,7 +110,24 @@ public class LoginServlet extends HttpServlet {
     	    return rs.next();
 	    }
 	}
+	
+	public List<String> getProfiles(String email, Connection conn) throws SQLException {
+		String query = 
+				"SELECT prof.ProfileID " +
+				"FROM Profile prof, Person per " +
+				"WHERE per.Email = ? AND per.SSN = prof.OwnerSSN";
+	    try (PreparedStatement stmt = conn.prepareStatement(query)) {
+	    	stmt.setString(1, email);
+    	    ResultSet rs = stmt.executeQuery();
 
+    	    List<String> profiles = new ArrayList<>();
+    	    while (rs.next()) {
+    	    	profiles.add(rs.getString(1));
+    	    }
+    	    
+    	    return profiles;
+	    }
+	}
 }
 
 
