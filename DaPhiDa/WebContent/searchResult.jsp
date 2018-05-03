@@ -24,6 +24,7 @@
           				<th>City</th>
           				<th>State</th>
           				<th>Last Seen</th>
+          				<th>Hobbies</th>
           			</tr>
           			<c:forEach items="${outputs}" var="out">
           				<tr>
@@ -50,6 +51,9 @@
           					</td>
           					<td> 
           							<c:out value="${out.dateOfLastAct}"/> 
+          					</td>
+          					<td> 
+          							<c:out value="${out.hobbies}"/> 
           					</td>
           				</tr>
           			</c:forEach>

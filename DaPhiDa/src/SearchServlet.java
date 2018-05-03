@@ -38,7 +38,7 @@ public class SearchServlet extends HttpServlet{
 	    String searchTerm = request.getParameter("searchTerm");
 	    
 	  //start queries here
-	    String sql = "select ProfileID, Rating, DateOfLastAct, City, State, Height, Weight, HairColor "
+	    String sql = "select ProfileID, Rating, DateOfLastAct, City, State, Height, Weight, HairColor, Hobbies "
 	    		+ "from search "
 	    		+ "where ";
 	    		
@@ -88,7 +88,7 @@ public class SearchServlet extends HttpServlet{
 	    		sql = sql + searchType + " = '" + searchTerm + "'";
 	    		break;
 	    		
-	    	case "ProfileID": default:
+	    	case "ProfileID": case "Hobbies": default:
 	    		//we can get this from profile, like
 	    		sql = sql + searchType + " like '%" + searchTerm + "%'";
 	    }
@@ -110,6 +110,7 @@ public class SearchServlet extends HttpServlet{
 				output.setState(rs.getString("State"));
 				output.setWeight(rs.getInt("Weight"));
 				output.setHeight(rs.getBigDecimal("Height"));
+				output.setHobbies(rs.getString("Hobbies"));
 				outputs.add(output);
 			}
 			if(outputs.isEmpty()) {

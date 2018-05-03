@@ -30,6 +30,7 @@
 		            		<option value="State">State</option>
 		            		<option value="DateOfLastAct">Activity</option>
 		            		<option value="Rating">Rating</option>
+		            		<option value="Hobbies">Hobbies</option>
 		            	</select>
 		            	<input type="text" placeholder="Search" name="searchTerm" style="height:25px" required>
 		            	<input id="searchButton" type="submit" value="Search" style="height:25px">

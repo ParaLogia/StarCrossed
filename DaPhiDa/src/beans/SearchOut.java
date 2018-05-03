@@ -12,6 +12,7 @@ public class SearchOut {
 	private String state;
 	private Timestamp dateOfLastAct;
 	private Integer rating;
+	private String hobbies;
 	
 	public SearchOut() {
 	}
@@ -73,5 +74,11 @@ public class SearchOut {
 	}
 	public void setRating(Integer rating) {
 		this.rating = rating;
+	}
+	public String getHobbies() {
+		return hobbies;
+	}
+	public void setHobbies(String hobbies) {
+		this.hobbies = hobbies;
 	}
 }
