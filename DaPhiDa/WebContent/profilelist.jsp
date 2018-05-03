@@ -19,13 +19,22 @@
           			<tr>
           				<th>Your Current Profiles</th>
           			</tr>
-          			<c:forEach items="${profiles}" var="profile">
+          			<c:if test="${!profiles.isEmpty()}">
+	          			<c:forEach items="${profiles}" var="profile">
+	          				<tr>
+	          					<td> <a href = profiles/<c:out value="${profile}"/>>
+	          							<c:out value="${profile}"/> </a>
+	          					</td>
+	          				</tr>
+	          			</c:forEach>
+          			</c:if>
+          			<c:if test="${profiles.isEmpty()}">
           				<tr>
-          					<td> <a href = profiles/<c:out value="${profile.profileID}"/>>
-          							<c:out value="${profile.profileID}"/> </a>
+          					<td> <a href = profiles/create>
+          							No profiles found. Create one now! </a>
           					</td>
           				</tr>
-          			</c:forEach>
+          			</c:if>
           		</table>
             <br>
         </div>

@@ -78,13 +78,16 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect("../index.jsp");
                 }
                 else {
-                    // TODO
                     System.err.println("Incorrect login");
                     response.sendRedirect("../login.jsp");
                 }
             } 
             catch (Exception e) {
                 e.printStackTrace();
+                System.err.println("Login failed");
+                session.removeAttribute("login");
+                session.removeAttribute("emp");
+                session.removeAttribute("profiles");
             }
         }
 	}
