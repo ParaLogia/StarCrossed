@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/employee/receipt/submit"})
+@WebServlet(urlPatterns = {"/employee/editReceipt/receipt"})
 public class UpdateReceiptServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	/**
@@ -32,7 +32,7 @@ public class UpdateReceiptServlet extends HttpServlet{
 		String update = 
 				"UPDATE Date D " +
 				"SET custRep = ?, location = ?, bookingfee = ?, "
-				+ "comments = ?, user1rating = ?, user2rating = ?, " 
+				+ "comments = ?, user1rating = ?, user2rating = ? " 
 				+ "WHERE profile1 = ? AND profile2 = ? AND date_time = ?";
 		
 		try (Connection conn = ConnUtil.getConnection(); 
@@ -68,7 +68,7 @@ public class UpdateReceiptServlet extends HttpServlet{
 	        return;
 		}
 		
-		response.sendRedirect("../success.jsp");
+		response.sendRedirect("../../success.jsp");
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

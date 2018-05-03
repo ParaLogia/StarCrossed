@@ -57,7 +57,7 @@
           							<c:out value="${date.user2Rating}"/> 
           					</td>
           					<td> 
-          							<a href="editReceipt/:${date.profile1}:${date.profile2}:${date.dateTime}">Edit</a>
+          							<a href="editReceipt/:${date.profile1}:${date.profile2}:${date.dateTime}:.receiptCheck">Edit</a>
           					</td>
           				</tr>
           			</c:forEach>
