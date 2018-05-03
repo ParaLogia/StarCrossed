@@ -72,6 +72,9 @@ public class LoginServlet extends HttpServlet {
                     if (isEmployee(email, conn)) {
                     	session.setAttribute("emp", email);
                     }
+                    if (isManager(email, conn)) {
+                    	session.setAttribute("manager", email);
+                    }
                     List<String> profiles = getProfiles(email, conn);
                     session.setAttribute("profiles", profiles);
                     
@@ -109,6 +112,17 @@ public class LoginServlet extends HttpServlet {
 				+ "WHERE per.Email = ? AND per.SSN = emp.SSN";
 	    try (PreparedStatement query = conn.prepareStatement(queryString)) {
     	    query.setString(1, email);
+    	    ResultSet rs = query.executeQuery();
+    	    return rs.next();
+	    }
+	}
+	public boolean isManager(String email, Connection conn) throws SQLException{
+		String queryString = "SELECT emp.Role " 
+				+ "FROM person per, employee emp "
+				+ "WHERE per.Email = ? AND per.SSN = emp.SSN AND emp.Role = ?";
+	    try (PreparedStatement query = conn.prepareStatement(queryString)) {
+    	    query.setString(1, email);
+    	    query.setString(2, "Manager");
     	    ResultSet rs = query.executeQuery();
     	    return rs.next();
 	    }

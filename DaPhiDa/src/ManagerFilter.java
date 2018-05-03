@@ -33,12 +33,12 @@ public class ManagerFilter implements Filter{
 		
 		HttpSession session = request.getSession(false);
 		
-		if (session == null && session.getAttribute("man") == null) {
+		if (session != null && session.getAttribute("manager") != null) {
+			System.out.println(session.getAttribute("manager"));
+			arg2.doFilter(request, response);
+		} else {
 			System.out.println("not manager");
 			response.sendRedirect("/CSE_305/index.jsp");
-		} else {
-//			System.out.println("continue");
-			arg2.doFilter(request, response);
 		}
 		
 	}
