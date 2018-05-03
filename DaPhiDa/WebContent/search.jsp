@@ -19,8 +19,23 @@
         <!-- Location -->
         <!-- Most active profiles? (Sort by last login?) -->
         <!-- Highly rated -->
-            <h2>Search for Amazing Matches, like Phillip Huang</h2> <br>
-            <input type="text" placeholder="Search by ProfileID">
+            <h2>Search for Amazing Matches, like Phillip Huang</h2> <br>        
+	            <form id="searchBar" method="get" action="search/submit">
+	            	<div class="container">
+		            	<select name="searchType" id="searchValue" style="height:25px">
+		            		<option value="ProfileID">Profile Name</option>
+		            		<option value="Height">Height</option>
+		            		<option value="Weight">Weight</option>
+		            		<option value="HairColor">Hair</option>
+		            		<option value="City">City Store</option>
+		            		<option value="State">State</option>
+		            		<option value="DateOfLastAct">Activity</option>
+		            		<option value="Rating">Rating</option>
+		            	</select>
+		            	<input type="text" placeholder="Search" name="searchTerm" style="height:25px" required>
+		            	<input id="searchButton" type="submit" value="Search" style="height:25px">
+	            	</div>
+	            </form>
             <br>
         </div>
     </div>

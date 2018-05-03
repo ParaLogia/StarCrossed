@@ -20,7 +20,7 @@ public class Profile {
 	public Profile() {
 		
 	}
-	public Profile(String profileID, String ownerSSN, Integer age, Integer datingAgeRangeStart, Integer datingAgeRangeEnd, Integer datingGeoRange, String m_f, BigDecimal height, Integer weight, String hairColor, Timestamp creatoinDate, Timestamp lastModDate) {
+	public Profile(String profileID, String ownerSSN, Integer age, Integer datingAgeRangeStart, Integer datingAgeRangeEnd, Integer datingGeoRange, String m_f, BigDecimal height, Integer weight, String hairColor, Timestamp creationDate, Timestamp lastModDate) {
 		this.profileID = profileID;
 		this.ownerSSN = ownerSSN;
 		this.age = age;
@@ -30,6 +30,9 @@ public class Profile {
 		this.m_f = m_f;
 		this.height = height;
 		this.weight = weight;
+		this.hairColor = hairColor;
+		this.creationDate = creationDate;
+		this.lastModDate = lastModDate;
 	}
 	public String getProfileID() {
 		return profileID;
