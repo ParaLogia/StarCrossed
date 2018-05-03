@@ -10,7 +10,7 @@ import javax.servlet.http.*;
  * @author Darren Ling
  *
  */
-@WebFilter(urlPatterns = { "/editprof", "/pubprof", "/search.jsp"})
+@WebFilter(urlPatterns = { "/editprof", "/pubprof", "/search.jsp", "/profiles/*"})
 public class LoginFilter implements Filter {
 
 	@Override
@@ -24,7 +24,7 @@ public class LoginFilter implements Filter {
 		
 		if (session == null || session.getAttribute("login") == null) {
 			System.out.println("invalid session");
-			response.sendRedirect("./login.jsp");
+			response.sendRedirect("/CSE_305/login.jsp");
 		} else {
 			System.out.println("continue");
 			chain.doFilter(request, response);
