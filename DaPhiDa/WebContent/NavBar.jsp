@@ -25,7 +25,7 @@
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
-                    <li><a href="login.jsp" class="hvr-grow" style="color: white;">Log In</a></li>
+                    <li><a href="login.jsp" class="hvr-grow" style="color: white;">Log In/Out</a></li>
 					<li><a href="aboutUs.jsp" class="hvr-grow" style="color: white;">About</a></li>
                 </ul>
             </div>
