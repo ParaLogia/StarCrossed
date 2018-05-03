@@ -100,6 +100,7 @@ public class ProfileServlet extends HttpServlet {
 		
 		// Check if editing
 		String doEdit = (String) request.getParameter("edit");
+		String doDate= (String) request.getParameter("date");
 		if (doEdit != null && doEdit.equalsIgnoreCase("true")) {
 			
 			// Employees or profile owners can access
@@ -115,7 +116,6 @@ public class ProfileServlet extends HttpServlet {
 			String doLike= (String) request.getParameter("like");
 			if (doLike != null && doLike.equalsIgnoreCase("true")) {
 				
-				// Employees or profile owners can access
 				if (!profiles.isEmpty() && !profiles.contains(profileID)) {
 					String mainProfile = profiles.get(0);
 					Timestamp time = Timestamp.from(Instant.now());

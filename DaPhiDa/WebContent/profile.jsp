@@ -78,6 +78,8 @@
 		        			<a href="${profile.profileID}?edit=true">Edit</a>
 		        			<br>
 		        			<a href="/CSE_305/likes/${profile.profileID}">Who this profile likes</a>
+		        			<br>
+		        			<a href="/CSE_305/dates/${profile.profileID}">Date list</a>
 	          			</c:if>
 	          		</c:forEach>
           		</c:if>
@@ -88,6 +90,8 @@
         				<br>
         				</c:if>
         				<a href="${profile.profileID}?like=true">Like</a>
+          				<br>
+	        			<a href="/CSE_305/date/${profile.profileID}">Date</a>
           		</c:if>
             </c:if>
         </div>
