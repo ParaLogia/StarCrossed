@@ -95,7 +95,6 @@ public class ProfileServlet extends HttpServlet {
 						hobbies.add(rs.getString(1));
 					}
 				}
-//				System.out.println("hair color: " + profile.getHairColor());
 			}
 		}
 		catch (Exception ex) {
@@ -106,7 +105,11 @@ public class ProfileServlet extends HttpServlet {
 		request.setAttribute("profile", profile);
 		request.setAttribute("hobbies", hobbies);	
 		
-		
+		// Check if editing
+		String doEdit = (String) request.getAttribute("edit");
+		if (doEdit != null && doEdit.equalsIgnoreCase("true")) {
+			
+		}
 		
 		// Pass request to jsp
 		RequestDispatcher view = request.getRequestDispatcher("/profile.jsp");
