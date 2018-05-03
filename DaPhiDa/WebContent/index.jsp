@@ -17,6 +17,10 @@
                 <h2>Welcome to StarCrossed by DaPhiDa</h2> <br>
                 <img src="Logo.PNG" width = "250" height = "250" class ="center-image"/> <br>
 				Welcome to the best Dating Website. Here, you can search our database for lots of people. <br>
+				
+				Don't have an account? Register for one here: <br>
+				<a href="Register.jsp" class="btn btn-primary hvr-grow">Click here to Register</a>
+				<br>
 				Start searching here:
                 <br>
                 <a href="search.jsp" class="btn btn-primary hvr-grow">Click here to find your soulmate</a>
