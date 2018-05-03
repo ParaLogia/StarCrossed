@@ -91,7 +91,7 @@
         				</c:if>
         				<a href="${profile.profileID}?like=true">Like</a>
           				<br>
-	        			<a href="/CSE_305/date/${profile.profileID}">Date</a>
+	        			<a href="/CSE_305/date.jsp?profile=${profile.profileID}">Set Up Date</a>
           		</c:if>
             </c:if>
         </div>

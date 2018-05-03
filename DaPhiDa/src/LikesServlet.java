@@ -85,7 +85,7 @@ public class LikesServlet extends HttpServlet {
 		request.setAttribute("likes", likes);
 
 		// Pass request to jsp
-		RequestDispatcher view = request.getRequestDispatcher("/likes.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/likelist.jsp");
 		view.forward(request, response);
 		
 	}

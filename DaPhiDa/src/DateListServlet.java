@@ -90,7 +90,7 @@ public class DateListServlet extends HttpServlet {
 		request.setAttribute("profile", profileID);
 		
 		// Pass request to jsp
-		RequestDispatcher view = request.getRequestDispatcher("/dates.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/datelist.jsp");
 		view.forward(request, response);
 	}
 
