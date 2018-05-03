@@ -26,7 +26,7 @@
                         </ul>
                     </li>
                     <li><a href="login.jsp" class="hvr-grow" style="color: white;">Log In</a></li>
-					<li><a href="AboutUs.jsp" class="hvr-grow" style="color: white;">About</a></li>
+					<li><a href="aboutUs.jsp" class="hvr-grow" style="color: white;">About</a></li>
                 </ul>
             </div>
         </div>
