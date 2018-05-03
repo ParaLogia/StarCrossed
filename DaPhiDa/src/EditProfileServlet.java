@@ -21,7 +21,7 @@ import beans.Profile;
  * @author Darren Ling
  *
  */
-@WebServlet(urlPatterns = { "/editprof" })
+@WebServlet(urlPatterns = { "/edit/submit" })
 public class EditProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	/**
@@ -37,37 +37,14 @@ public class EditProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
 	    HttpSession session = request.getSession();
+	    String login = (String)session.getAttribute("login");
 	    
-	    String email = (String) session.getAttribute("login");
-	    //assume it won't be null since we run through a filter to get to this page
-	    String sql = "Select prof.ProfileID " 
-	    		+ "from profile prof, person per "
-	    		+ "where per.Email = ? AND per.SSN = prof.OwnerSSN";
-	    ResultSet s;
-	    try (Connection conn = ConnUtil.getConnection()){
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, email);
-			s = ps.executeQuery();
-			List<Profile> profiles = new ArrayList<Profile>();
-			while (s.next()) {
-				Profile profile = new Profile();
-				profile.setProfileID(s.getString("ProfileID"));
-				profiles.add(profile);
-			}
-			if(profiles.isEmpty()) {
-				Profile profile = new Profile();
-				profile.setProfileID("No Profiles Currently Found, Go make one!");
-				profiles.add(profile);
-			}
-			session.setAttribute("profiles", profiles);
-			RequestDispatcher view = request.getRequestDispatcher("editprof.jsp");
-			view.forward(request, response);
-			ConnUtil.closeQuietly(conn);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	    
+	    if (login == null) {
+	        response.sendRedirect("/CSE_305/login.jsp");
+	    }
+	    else {
+	        response.sendRedirect("/CSE_305/pubprof");
+	    }
 	}
 
 	/**

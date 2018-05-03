@@ -20,7 +20,7 @@
         	<c:if test = "${profile != null}">
             	<h1> <c:out value="${profile.profileID}"/> </h1> <br>
             	
-            	<form action="login/submit" method="post">
+            	<form action="edit/submit" method="post">
 					<div class="container">
 						<label for="age"><b>Age</b></label>
 					    <input type="number" value="${profile.age}" name="age" required>
@@ -49,17 +49,8 @@
 					    <label for="hobbies"><b>hobbies</b></label>
 					    <input type="text" value="${profile.hobbies}" name="hobbies" required>
 						<br>
-					    <button type="submit">Login</button>    
-          		<table border = "5" style="width:100%">
-          			<tr>
-          				<th>Hobbies</th>
-          				<td>
-	          			<c:forEach items="${hobbies}" var="hobby">
-         					<c:out value = "${hobby}"/> <br>
-	          			</c:forEach>
-	          			</td>
-          			</tr>
-          		</table>
+  						<input type="hidden" name="profileID" value="${profile.profileID}">
+					    <button type="submit">Submit</button>
 					</div>
 				</form> 
             </c:if>

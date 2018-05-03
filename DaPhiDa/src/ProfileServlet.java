@@ -86,9 +86,15 @@ public class ProfileServlet extends HttpServlet {
 		request.setAttribute("profile", profile);
 		
 		// Check if editing
-		String doEdit = (String) request.getAttribute("edit");
+		String doEdit = (String) request.getParameter("edit");
 		if (doEdit != null && doEdit.equalsIgnoreCase("true")) {
 			
+			// TODO security checks
+
+			// Pass request to jsp
+			RequestDispatcher view = request.getRequestDispatcher("/editprof.jsp");
+			view.forward(request, response);
+			return;
 		}
 		
 		// Pass request to jsp
