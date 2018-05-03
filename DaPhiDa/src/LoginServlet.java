@@ -46,16 +46,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
-	    // TODO logout still needs to be implemented
-//	    if((request.getParameter("action")!=null) 
-//	            && (request.getParameter("action").trim().equals("logout"))) {
-//	        HttpSession session=request.getSession();  
-//            session.removeAttribute("login");
-//            response.sendRedirect("/");
-//            return;
-//	        System.err.println("action: " + request.getParameter("action"));
-//        }
-//        
+		
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
