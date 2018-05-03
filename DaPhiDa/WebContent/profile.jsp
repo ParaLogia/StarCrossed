@@ -14,7 +14,12 @@
     <div style="height: 54px;"></div>
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
-            <h1> <c:out value="${profileID}"/> </h1> <br>
+        	<c:if test = "${profile == null}">
+            	<h1> Error loading profile details </h1> <br>
+            </c:if>
+        	<c:if test = "${profile != null}">
+            	<h1> <c:out value="${profile.profileID}"/> </h1> <br>
+            </c:if>
         </div>
     </div>
     <jsp:include page="footer.html"></jsp:include> 
