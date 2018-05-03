@@ -27,7 +27,7 @@
 		            		<option value="Height">Height</option>
 		            		<option value="Weight">Weight</option>
 		            		<option value="HairColor">Hair</option>
-		            		<option value="City">City Store</option>
+		            		<option value="City">City</option>
 		            		<option value="State">State</option>
 		            		<option value="DateOfLastAct">Activity</option>
 		            		<option value="Rating">Rating</option>
