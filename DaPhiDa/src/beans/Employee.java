@@ -17,10 +17,10 @@ public class Employee {
 		this.startDate = startDate;
 		this.hourlyRate = hourlyRate;
 	}
-	public String getSSN() {
+	public String getSsn() {
 		return ssn;
 	}
-	public void setSSN(String ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
 	public String getRole() {
@@ -41,4 +41,5 @@ public class Employee {
 	public void setHourlyRate(Integer hourlyRate) {
 		this.hourlyRate = hourlyRate;
 	}
+	
 }

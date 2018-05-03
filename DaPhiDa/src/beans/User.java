@@ -17,16 +17,16 @@ public class User {
 		this.rating = rating;
 		this.dateOfLastAct = dateOfLastAct;
 	}
-	public String getSSN() {
+	public String getSsn() {
 		return ssn;
 	}
-	public void setSSN(String ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	public String getPPP() {
+	public String getPpp() {
 		return ppp;
 	}
-	public void setPPP(String ppp) {
+	public void setPpp(String ppp) {
 		this.ppp = ppp;
 	}
 	public Integer getRating() {
@@ -41,4 +41,5 @@ public class User {
 	public void setDateOfLastAct(Timestamp dateOfLastAct) {
 		this.dateOfLastAct = dateOfLastAct;
 	}
+	
 }

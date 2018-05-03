@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * @author Darren Ling
  *
  */
-@WebFilter(urlPatterns = { "/manager.jsp"})
+@WebFilter(urlPatterns = { "/manager.jsp" , "/manager/*"})
 public class ManagerFilter implements Filter{
 
 	@Override
@@ -34,7 +34,6 @@ public class ManagerFilter implements Filter{
 		HttpSession session = request.getSession(false);
 		
 		if (session != null && session.getAttribute("manager") != null) {
-			System.out.println(session.getAttribute("manager"));
 			arg2.doFilter(request, response);
 		} else {
 			System.out.println("not manager");
