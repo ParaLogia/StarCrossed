@@ -18,7 +18,7 @@
             	<h2> Error loading profile </h2> <br>
             </c:if>
         	<c:if test = "${profile != null}">
-            	<h1> <c:out value="${profile.profileID}"/> </h1> <br>
+            	<h1> <c:out value="Editing ${profile.profileID}"/> </h1> <br>
             	
             	<form action="edit/submit" method="post">
 					<div class="container">
@@ -50,6 +50,7 @@
 					    <input type="text" value="${profile.hobbies}" name="hobbies" required>
 						<br>
   						<input type="hidden" name="profileID" value="${profile.profileID}">
+  						<br>
 					    <button type="submit">Submit</button>
 					</div>
 				</form> 
