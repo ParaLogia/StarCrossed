@@ -10,7 +10,6 @@
 </head>
 <body>
     <jsp:include page="NavBar.jsp"></jsp:include>
-    <div style="height: 54px;"></div>
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
                 <h2>You are already Logged in, press below to log out</h2> <br>

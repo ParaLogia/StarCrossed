@@ -11,7 +11,6 @@
 </head>
 <body>
     <jsp:include page="NavBar.jsp"></jsp:include>
-    <div style="height: 54px;"></div>
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
        <h2>Search Results</h2> <br>
        	<p>Height search has a radius of 0.3 and Weight search has a radius of 20</p>
