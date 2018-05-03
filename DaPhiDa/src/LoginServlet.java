@@ -65,6 +65,8 @@ public class LoginServlet extends HttpServlet {
                 System.err.println("Connected successfully to database");
     
                 conn.setAutoCommit(false);
+                session.setAttribute("emp", null);
+                session.setAttribute("manager", null);
                 
                 if (validLogin(email, password, conn)) {
                     System.err.println("Successfully logged in");
