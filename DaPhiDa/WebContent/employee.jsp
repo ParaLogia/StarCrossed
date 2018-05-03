@@ -18,8 +18,8 @@
             <a href="/CSE_305/manager.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Manager Page</a>
             <a href="/CSE_305/mailingList" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Generate Mailing List</a>
             <div style="height: 30px;"></div>
-            <a href="/CSE_305/suggestionGenerator.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Suggestion Generator</a>
-            <a href="/CSE_305/recordReceipt.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Record a Receipt</a>
+            <!-- <a href="/CSE_305/suggestionGenerator.jsp" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Suggestion Generator</a>  -->
+            <a href="/CSE_305/employee/recordReceipt" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Record a Receipt</a>
             <a href="/CSE_305/currentEmployees" style="color: black; background: pink; border: 10px solid; border-radius: 10px; border-color: pink">Current Employee List</a>
             
         </div>

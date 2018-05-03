@@ -33,7 +33,7 @@ public class CurrentEmployees extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {	    
-	  //start query here
+		//start query here
 	    String sql = "select * from employeetable";
 
 	    ResultSet rs;
