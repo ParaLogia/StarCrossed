@@ -79,7 +79,7 @@ public class CreateProfileServlet extends HttpServlet {
 					"FROM User U " +
 					"WHERE U.SSN = ?";
 			try (PreparedStatement stmt = conn.prepareStatement(ssnQuery)) {
-				stmt.setString(1, email);
+				stmt.setString(1, ownerSSN);
 				ResultSet rs = stmt.executeQuery();
 				
 				// Need to create user
@@ -100,6 +100,8 @@ public class CreateProfileServlet extends HttpServlet {
 						}
 					}
 				}
+				
+				conn.commit();
 			}
 			
 			String insertProf = 
