@@ -15,21 +15,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Integer;
+import beans.Date;
 import beans.Profile;
-import beans.String;
 
 /**
  * Servlet implementation class ProfileServlet
  */
 @WebServlet(urlPatterns = { "/CustomerDateList/*" })
-public class ProfileServlet extends HttpServlet {
+public class CustomerDateListServlet extends HttpServlet {
 	 static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProfileServlet() {
+    public CustomerDateListServlet() {
         super();
     }
 
@@ -67,8 +66,8 @@ public class ProfileServlet extends HttpServlet {
 					String location			= rs.getString("location");
 					BigDecimal bookingFee	= rs.getBigDecimal("bookingFee");
 					String comments			= rs.getString("comments");
-					Integer user1Rating		= rs.getInteger("user1Rating");
-					Integer user2Rating		= rs.getInteger("user2Rating");
+					Integer user1Rating		= rs.getInt("user1Rating");
+					Integer user2Rating		= rs.getInt("user2Rating");
 
 					dates.add( new Date(profile1, profile2, custRep, dateTime, location, bookingFee, comments, user1Rating, user2Rating) );
 				}
