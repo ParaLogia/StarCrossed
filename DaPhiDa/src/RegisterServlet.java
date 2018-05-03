@@ -41,17 +41,17 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    String ssn = (String)request.getParameter("ssn");
-	    String password = (String)request.getParameter("password");
-	    String passwordRepeat = (String)request.getParameter("passwordRepeat");
-	    String firstName = (String)request.getParameter("firstName");
-	    String lastName = (String)request.getParameter("lastName");
-	    String street= (String)request.getParameter("street");
-	    String city = (String)request.getParameter("city");
-	    String state = (String)request.getParameter("state");
+	    String ssn = request.getParameter("ssn");
+	    String password = request.getParameter("password");
+	    String passwordRepeat = request.getParameter("passwordRepeat");
+	    String firstName = request.getParameter("firstName");
+	    String lastName = request.getParameter("lastName");
+	    String street= request.getParameter("street");
+	    String city = request.getParameter("city");
+	    String state = request.getParameter("state");
 	    Integer zipcode = Integer.valueOf(request.getParameter("zipcode"));
-	    String email = (String)request.getParameter("email");
-	    String telephone= (String)request.getParameter("telephone");
+	    String email = request.getParameter("email");
+	    String telephone= request.getParameter("telephone");
 	    
 	    if (email.trim().equals("") || password.trim().equals("") || ssn.trim().equals("") ) {
 	    	System.err.println("No spaces in fields");
