@@ -15,10 +15,61 @@
     <div class="container" style="padding-top: 100px; text-align: center; padding-bottom:50px;">
         <div class="col-md-12">
         	<c:if test = "${profile == null}">
-            	<h1> Error loading profile details </h1> <br>
+            	<h2> Error loading profile </h2> <br>
             </c:if>
         	<c:if test = "${profile != null}">
             	<h1> <c:out value="${profile.profileID}"/> </h1> <br>
+            	
+          		<table border = "5" style="width:100%">
+          			<tr>
+          				<th>age</th>
+          				<td><c:out value = "${profile.age}"/></td>
+          			</tr>
+          			<tr>
+          				<th>datingAgeRangeStart</th>
+          				<td><c:out value = "${profile.datingAgeRangeStart}"/></td>
+          			</tr>
+          			<tr>
+          				<th>datingAgeRangeEnd</th>
+          				<td><c:out value = "${profile.datingAgeRangeEnd}"/></td>
+          			</tr>
+          			<tr>
+          				<th>datingGeoRange</th>
+          				<td><c:out value = "${profile.datingGeoRange}"/></td>
+          			</tr>
+          			<tr>
+          				<th>m_f</th>
+          				<td><c:out value = "${profile.m_f}"/></td>
+          			</tr>
+          			<tr>
+          				<th>height</th>
+          				<td><c:out value = "${profile.height}"/></td>
+          			</tr>
+          			<tr>
+          				<th>weight</th>
+          				<td><c:out value = "${profile.weight}"/></td>
+          			</tr>
+          			<tr>
+          				<th>hairColor</th>
+          				<td><c:out value = "${profile.hairColor}"/></td>
+          			</tr>
+          			<tr>
+          				<th>creationDate</th>
+          				<td><c:out value = "${profile.creationDate}"/></td>
+          			</tr>
+          			<tr>
+          				<th>lastModDate</th>
+          				<td><c:out value = "${profile.lastModDate}"/></td>
+          			</tr>
+          			<tr>
+          				<th>Hobbies</th>
+          				<td>
+	          			<c:forEach items="${hobbies}" var="hobby">
+         					<c:out value = "${hobby}"/>
+	          			</c:forEach>
+	          			</td>
+          			</tr>
+          		</table>
             </c:if>
         </div>
     </div>
