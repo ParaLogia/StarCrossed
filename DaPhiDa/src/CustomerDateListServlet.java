@@ -44,34 +44,32 @@ public class CustomerDateListServlet extends HttpServlet {
 		
 		ArrayList<Date> dates = new ArrayList<Date>();
 		
-		try (Connection conn = ConnUtil.getConnection()) {
+		String profQuery = 
+				"SELECT * " +
+				"FROM Date D " +
+				"WHERE D.profile1 = ? OR D.profile2 = ?";
+		
+		try (Connection conn = ConnUtil.getConnection();
+				PreparedStatement profStmt = conn.prepareStatement(profQuery)) {
 			conn.setAutoCommit(false);
 			
-			String profQuery = 
-					"SELECT * " +
-					"FROM Date D " +
-					"WHERE D.profile1 = ? OR D.profile2 = ?";
+			profStmt.setString(1, profileID);
+			profStmt.setString(2, profileID);
+			ResultSet rs = profStmt.executeQuery();
 			
-			try (PreparedStatement profStmt = conn.prepareStatement(profQuery)) {
-				profStmt.setString(1, profileID);
-				profStmt.setString(2, profileID);
-				ResultSet rs = profStmt.executeQuery();
-				
-				while ( rs.next() ) {
-					//create a list of dates
-					String profile1			= rs.getString("profile1");
-					String profile2			= rs.getString("profile2");
-					String custRep			= rs.getString("custRep");
-					Timestamp dateTime		= rs.getTimestamp("dateTime");
-					String location			= rs.getString("location");
-					BigDecimal bookingFee	= rs.getBigDecimal("bookingFee");
-					String comments			= rs.getString("comments");
-					Integer user1Rating		= rs.getInt("user1Rating");
-					Integer user2Rating		= rs.getInt("user2Rating");
+			while ( rs.next() ) {
+				//create a list of dates
+				String profile1			= rs.getString("profile1");
+				String profile2			= rs.getString("profile2");
+				String custRep			= rs.getString("custRep");
+				Timestamp dateTime		= rs.getTimestamp("dateTime");
+				String location			= rs.getString("location");
+				BigDecimal bookingFee	= rs.getBigDecimal("bookingFee");
+				String comments			= rs.getString("comments");
+				Integer user1Rating		= rs.getInt("user1Rating");
+				Integer user2Rating		= rs.getInt("user2Rating");
 
-					dates.add( new Date(profile1, profile2, custRep, dateTime, location, bookingFee, comments, user1Rating, user2Rating) );
-				}
-
+				dates.add( new Date(profile1, profile2, custRep, dateTime, location, bookingFee, comments, user1Rating, user2Rating) );
 			}
 		}
 		catch (Exception ex) {
