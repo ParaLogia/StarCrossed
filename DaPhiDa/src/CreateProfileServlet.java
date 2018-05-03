@@ -133,7 +133,7 @@ public class CreateProfileServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession(false);
 			List<String> profiles = (List<String>) session.getAttribute("profiles");
-			profiles.add(profileID);
+			profiles.add(0, profileID);
 			session.setAttribute("profiles", profiles);
 			
 			response.sendRedirect("/CSE_305/pubprof");

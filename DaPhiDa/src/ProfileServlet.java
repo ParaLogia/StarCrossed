@@ -86,16 +86,24 @@ public class ProfileServlet extends HttpServlet {
 		// Attach profile and hobbies to request
 		request.setAttribute("profile", profile);
 		
+		// Check if owner
+		HttpSession session = request.getSession();
+		List<String> profiles = (List<String>) session.getAttribute("profiles");
+		
+		if (profiles.contains(profileID)) {
+			// Reorder profiles
+			profiles.remove(profileID);
+			profiles.add(0, profileID);
+			session.setAttribute("profiles", profiles);
+		}
+		
 		// Check if editing
 		String doEdit = (String) request.getParameter("edit");
 		if (doEdit != null && doEdit.equalsIgnoreCase("true")) {
 			
-			// Security check
-			HttpSession session = request.getSession();
-			List<String> profiles = (List<String>) session.getAttribute("profiles");
-
 			// Employees or profile owners can access
 			if (session.getAttribute("emp") != null || profiles.contains(profileID)) {
+				
 				// Pass request to jsp
 				RequestDispatcher view = request.getRequestDispatcher("/editprof.jsp");
 				view.forward(request, response);
