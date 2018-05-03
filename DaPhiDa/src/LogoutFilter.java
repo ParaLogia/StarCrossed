@@ -20,11 +20,11 @@ public class LogoutFilter implements Filter {
 		
 		HttpSession session = request.getSession(false);
 		
-		if (session == null || session.getAttribute("login") != null) {
+		if (session != null && session.getAttribute("login") != null) {
 			System.out.println("logged in, redirecting to logout");
 			response.sendRedirect("/CSE_305/logout.jsp");
 		} else {
-			System.out.println("continue");
+			System.out.println("proceed to login page");
 			chain.doFilter(request, response);
 		}
 	}

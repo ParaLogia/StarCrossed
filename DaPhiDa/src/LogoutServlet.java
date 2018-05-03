@@ -16,8 +16,8 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	                        throws ServletException, IOException {
 	    HttpSession session = request.getSession();
-	    session.setAttribute("login", null);
-	    response.sendRedirect("../login.jsp");
+	    session.removeAttribute("login");
+	    response.sendRedirect("/CSE_305/login.jsp");
 	}
 
 	

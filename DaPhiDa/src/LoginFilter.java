@@ -26,7 +26,7 @@ public class LoginFilter implements Filter {
 			System.out.println("invalid session");
 			response.sendRedirect("/CSE_305/login.jsp");
 		} else {
-			System.out.println("continue");
+//			System.out.println("continue");
 			chain.doFilter(request, response);
 		}
 
