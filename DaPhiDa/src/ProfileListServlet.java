@@ -22,7 +22,7 @@ import beans.Profile;
  *
  */
 @WebServlet(urlPatterns = { "/pubprof" })
-public class PublicProfileServlet extends HttpServlet {
+public class ProfileListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -59,12 +59,9 @@ public class PublicProfileServlet extends HttpServlet {
 				profile.setProfileID("No Profiles Currently Found, Go make one!");
 				profiles.add(profile);
 			}
-			session.setAttribute("profiles", profiles);
+			request.setAttribute("profiles", profiles);
 			
-			System.out.flush();
-			System.out.println("profiles: " + profiles);
-			
-			RequestDispatcher view = request.getRequestDispatcher("pubprof.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("profilelist.jsp");
 			view.forward(request, response);
 			ConnUtil.closeQuietly(conn);
 		} catch (Exception e) {
