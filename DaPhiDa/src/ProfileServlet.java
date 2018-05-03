@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,6 +109,36 @@ public class ProfileServlet extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("/editprof.jsp");
 				view.forward(request, response);
 				return;
+			}
+		}
+		else {
+			String doLike= (String) request.getParameter("like");
+			if (doLike != null && doLike.equalsIgnoreCase("true")) {
+				
+				// Employees or profile owners can access
+				if (!profiles.isEmpty() && !profiles.contains(profileID)) {
+					String mainProfile = profiles.get(0);
+					Timestamp time = Timestamp.from(Instant.now());
+					
+					String likeQuery = 
+							"INSERT INTO Likes " +
+							"VALUES(?, ?, ?)";
+					try (Connection conn = ConnUtil.getConnection();
+							PreparedStatement stmt = conn.prepareStatement(likeQuery)) {
+						conn.setAutoCommit(true);
+						
+						stmt.setString(1, mainProfile);
+						stmt.setString(2, profileID);
+						stmt.setTimestamp(3, time);
+						
+						stmt.executeUpdate();
+						
+						request.setAttribute("liked", true);
+					}
+					catch (Exception ex) {
+						ex.printStackTrace();
+					}
+				}
 			}
 		}
 		

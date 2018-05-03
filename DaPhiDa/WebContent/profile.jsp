@@ -78,6 +78,14 @@
 	          			</c:if>
 	          		</c:forEach>
           		</c:if>
+          		<c:if test="${!profiles.isEmpty() && !profiles.contains(profile.profileID)}">
+        				<br>
+        				<c:if test="${liked }">
+        				<h4>Liked.</h4>
+        				<br>
+        				</c:if>
+        				<a href="${profile.profileID}?like=true">Like</a>
+          		</c:if>
             </c:if>
         </div>
     </div>
