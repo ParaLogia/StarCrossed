@@ -20,17 +20,22 @@
           				<th>Your Current Profiles</th>
           			</tr>
           			<c:if test="${!profiles.isEmpty()}">
-	          			<c:forEach items="${profiles}" var="profile">
+	          			<c:forEach items="${profiles}" var="prof">
 	          				<tr>
-	          					<td> <a href = profiles/<c:out value="${profile}"/>>
-	          							<c:out value="${profile}"/> </a>
+	          					<td> <a href = profiles/<c:out value="${prof}"/>>
+	          							<c:out value="${prof}"/> </a>
 	          					</td>
 	          				</tr>
 	          			</c:forEach>
+	          			<tr>
+          					<td> <a href = createprof.jsp>
+          							Create a new profile </a>
+          					</td>
+          				</tr>
           			</c:if>
           			<c:if test="${profiles.isEmpty()}">
           				<tr>
-          					<td> <a href = profiles/create>
+          					<td> <a href = createprof.jsp>
           							No profiles found. Create one now! </a>
           					</td>
           				</tr>
